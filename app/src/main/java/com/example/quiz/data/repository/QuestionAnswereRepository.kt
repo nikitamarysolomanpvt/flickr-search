@@ -1,17 +1,13 @@
 package com.example.quiz.data.repository
 
 import androidx.annotation.WorkerThread
-import androidx.lifecycle.LiveData
 import com.example.quiz.data.entities.QuestionAnswere
-import com.example.quiz.data.local.QuestionAnswerDao
-import com.example.quiz.data.local.QuestionDao
-import com.example.quiz.data.remote.QuestionRemoteDataSource
-import kotlinx.coroutines.flow.Flow
+import com.example.quiz.data.local.ItemDetailsDao
 import javax.inject.Inject
 
 
     class QuestionAnswereRepository @Inject constructor(
-        private val localDataSource: QuestionAnswerDao
+        private val localDataSource: ItemDetailsDao
     ) {
     // Declares the DAO as a private property in the constructor. Pass in the DAO
 // instead of the whole database, because you only need access to the DAO

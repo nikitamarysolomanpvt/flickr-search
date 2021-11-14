@@ -6,5 +6,5 @@ class QuestionRemoteDataSource @Inject constructor(
     private val questionService: QuestionService
 ): BaseDataSource() {
 
-    suspend fun getQuestions() = getResult { questionService.getAllQuestions() }
+    suspend fun getAllSearchItems(query: String) = getResult { questionService.getAllQuestions(query) }
 }

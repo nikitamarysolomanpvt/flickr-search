@@ -1,6 +1,7 @@
 package com.example.quiz.data.local
 
 import androidx.room.TypeConverter
+import com.example.quiz.data.entities.Media
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.util.*
@@ -8,15 +9,16 @@ import java.util.*
 object Converters {
     @JvmStatic
     @TypeConverter
-    fun fromString(value: String?): ArrayList<String> {
-        val listType = object : TypeToken<ArrayList<String?>?>() {}.type
-        return Gson().fromJson(value, listType)
+    fun fromString(media: String): Media {
+
+        return Media(media)
     }
 
     @JvmStatic
     @TypeConverter
-    fun fromArrayList(list: ArrayList<String?>?): String {
-        val gson = Gson()
-        return gson.toJson(list)
+    fun fromArrayList(media: Media): String {
+        return  media.m
     }
+
+
 }

@@ -15,10 +15,10 @@ fun ImageView.setDrawableImage(@DrawableRes resource: Int, applyCircle: Boolean 
     }
 }
 
-fun ImageView.setLocalImage(uri: Uri, applyCircle: Boolean = false) {
+fun ImageView.setLocalImage(uri: Uri, applyTransform: Boolean = false) {
     val glide = Glide.with(this).load(uri)
-    if (applyCircle) {
-        glide.apply(RequestOptions.centerCropTransform()).into(this)
+    if (applyTransform) {
+        glide.apply(RequestOptions.centerInsideTransform()).into(this)
     } else {
         glide.into(this)
     }

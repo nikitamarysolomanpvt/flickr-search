@@ -9,27 +9,29 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.quiz.R
 import com.example.quiz.databinding.ActivityMainBinding
-import com.example.quiz.ui.characters.QuestionsViewModel
+import com.example.quiz.ui.questions.SearchItemListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding: ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.lifecycleOwner = this
         val navHostFragment: NavHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController: NavController = navHostFragment.navController
 
-        val appBarConfiguration: AppBarConfiguration = AppBarConfiguration(navController.graph)
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
         binding.toolbar.setupWithNavController(navController, appBarConfiguration)
-
+//        setupActionBarWithNavController(navController)
     }
 
-    val mViewModel: QuestionsViewModel
-        get() = ViewModelProvider(this).get(QuestionsViewModel::class.java)
+    val mViewModel: SearchItemListViewModel
+        get() = ViewModelProvider(this).get(SearchItemListViewModel::class.java)
 }

@@ -5,11 +5,10 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.quiz.data.entities.Question
 import com.example.quiz.data.entities.QuestionAnswere
 
 @Dao
-interface QuestionAnswerDao {
+interface ItemDetailsDao {
 
     @Query("SELECT * FROM questionAnswere")
     fun getAllQuestionAnswers() : LiveData<List<QuestionAnswere>>

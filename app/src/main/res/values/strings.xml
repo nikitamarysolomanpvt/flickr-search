@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Assesment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="question"><![CDATA[<p>Which one of these foods is likely to contain the most bacteria?</p>]]></string>
+    <string name="data_not_found">data not found</string>
 </resources>

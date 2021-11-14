@@ -6,6 +6,6 @@ data class QuestionList(
     val assessmentName : String,
     val subject : String,
     val duration : Int,
-    val questions : List<Question>,
+//    val questions : List<Question>,
     val totalMarks : Int
 )

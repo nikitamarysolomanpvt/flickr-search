@@ -1,14 +1,14 @@
-package com.example.quiz.ui.characters
+package com.example.quiz.ui.questions
 
-import android.view.View
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import com.example.quiz.data.repository.QuestionRepository
 
-class QuestionsViewModel @ViewModelInject constructor(
+class SearchItemListViewModel @ViewModelInject constructor(
     private val repository: QuestionRepository
 ) : ViewModel() {
 
-    val questions = repository.getQuestions()
+    var query:String=""
+    val questions = repository.getQuestions(query)
 
 }
