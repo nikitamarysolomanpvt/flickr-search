@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:popUpToInclusive="true"
     app:startDestination="@id/searchItemListFragment">
 
     <fragment
@@ -14,10 +13,7 @@
         <action
             android:id="@+id/action_searchItemListFragment_to_itemDetailFragment"
             app:destination="@id/itemDetailFragment" />
-        <argument
-            android:name="title"
-            app:argType="string"
-            android:defaultValue="no data"/>
+
 
     </fragment>
     <fragment

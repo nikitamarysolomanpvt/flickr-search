@@ -10,15 +10,13 @@ import org.junit.Assert.*
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.quiz.data.remote.QuestionService
+import com.example.quiz.data.remote.SearchItemService
 
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import okio.buffer
 import okio.source
-import org.hamcrest.CoreMatchers
-import org.hamcrest.core.IsNull
 import org.junit.*
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
@@ -26,13 +24,13 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 @RunWith(JUnit4::class)
-class QuestionServiceTest {
+class SearchItemServiceTest {
 
     @Rule
     @JvmField
     val instantExecutorRule = InstantTaskExecutorRule()
 
-    private lateinit var service: QuestionService
+    private lateinit var service: SearchItemService
 
     private lateinit var mockWebServer: MockWebServer
 
@@ -45,7 +43,7 @@ class QuestionServiceTest {
                 GsonConverterFactory.create()
             )
             .build()
-            .create(QuestionService::class.java)
+            .create(SearchItemService::class.java)
     }
 
 

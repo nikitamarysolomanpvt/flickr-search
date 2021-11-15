@@ -1,12 +1,13 @@
 package com.example.quiz.data.entities
 
+import com.google.gson.annotations.SerializedName
 
 data class SearchResults (
 
-	 val title : String,
-	 val link : String,
-	 val description : String,
-	 val modified : String,
-	 val generator : String,
-	 val items : List<SearchItem>
+	@SerializedName("title") val title : String,
+	@SerializedName("link") val link : String,
+	@SerializedName("description") val description : String,
+	@SerializedName("modified") val modified : String,
+	@SerializedName("generator") val generator : String,
+	@SerializedName("items") val items : ArrayList<SearchItem>
 )

@@ -19,3 +19,5 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+-keepnames class com.example.quiz.data.entities.SearchItem
+-keepnames class com.example.quiz.data.entities.SearchResults

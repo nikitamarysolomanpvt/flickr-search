@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    >
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/questions_rv"
+                android:id="@+id/search_item_rv"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layoutAnimation="@anim/layout_animation"
                 app:layout_constraintTop_toTopOf="parent"
                 />
@@ -24,6 +24,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/white"
                 android:gravity="center"
+                android:visibility="gone"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +40,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Welcome! Do a search"
+                    android:text="@string/welcome_do_a_search"
                     android:textColor="#000000"
                     android:textSize="24sp" />
             </LinearLayout>
@@ -54,5 +55,4 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </FrameLayout>
+        </LinearLayout>

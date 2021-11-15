@@ -6,8 +6,9 @@ import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
@@ -16,6 +17,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.quiz.R
 import com.example.quiz.data.entities.SearchItem
 import com.example.quiz.databinding.ItemDetailFragmentBinding
+import com.example.quiz.ui.questions.SearchItemListViewModel
 import com.example.quiz.utils.autoCleared
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,7 +25,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class ItemDetailFragment : Fragment() {
 
     private var binding: ItemDetailFragmentBinding by autoCleared()
-    private val viewModel: ItemDetailViewModel by viewModels()
+    private val viewModel: ItemDetailViewModel by activityViewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,18 +37,11 @@ class ItemDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val title = arguments?.getString("title")
-        viewModel.getSearchItem(title)
-        setupObservers()
-    }
-
-    private fun setupObservers() {
-        viewModel.searchItem.observe(viewLifecycleOwner, Observer {
-            bindQuestionAnswers(it!!)
-        })
+        bindQuestionAnswers(viewModel.searchItem.value!!)
     }
 
     private fun bindQuestionAnswers(searchItem: SearchItem) {
+
         Glide.with(binding.imagePoster.context).load(searchItem.media.m)
             .centerCrop()
             .thumbnail(0.5f)
@@ -53,7 +49,6 @@ class ItemDetailFragment : Fragment() {
             .centerCrop()
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(binding.imagePoster)
-
         binding.toolbar.title=searchItem.title
         binding.authorTv.text=searchItem.author
 
@@ -62,5 +57,14 @@ class ItemDetailFragment : Fragment() {
         } else {
             Html.fromHtml(searchItem.description)
         }
+    }
+    override fun onResume() {
+        super.onResume()
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
     }
 }

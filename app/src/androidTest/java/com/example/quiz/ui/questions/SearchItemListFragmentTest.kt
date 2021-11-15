@@ -51,6 +51,18 @@ class SearchItemListFragmentTest {
         }
     }
 
+ @Test
+    fun questionsFragmentTest_searchItem_is_displayed() {
+        ActivityScenario.launch(
+            MainActivity::class.java
+        ).use {
+            onView(withId(R.id.questions_rv)).perform(
+                scrollToPosition<RecyclerView.ViewHolder>(0)
+            )
+            onView(withId(R.id.item)).check(matches(isDisplayed()))
+        }
+    }
+
 
 
 

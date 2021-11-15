@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.quiz.data.local.AppDatabase
-import com.example.quiz.data.local.SearchItemsDao
+import com.example.quiz.data.local.SearchItemDao
 import junit.framework.Assert.assertEquals
 import org.junit.After
 import org.junit.Before
@@ -24,7 +24,7 @@ import org.junit.runner.RunWith
 class WordDaoTest {
     @Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
-    private var mWordDao: SearchItemsDao? = null
+    private var mWordDao: SearchItemDao? = null
     private var mDb: AppDatabase? = null
     @Before
     fun createDb() {

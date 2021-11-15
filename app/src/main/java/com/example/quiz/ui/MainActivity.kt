@@ -1,11 +1,13 @@
 package com.example.quiz.ui
 
 import android.os.Bundle
+import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.quiz.R
 import com.example.quiz.databinding.ActivityMainBinding
@@ -25,13 +27,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         val navHostFragment: NavHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController: NavController = navHostFragment.navController
-
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
-        binding.toolbar.setupWithNavController(navController, appBarConfiguration)
+//        val navController: NavController = navHostFragment.navController
 //        setupActionBarWithNavController(navController)
     }
 
-    val mViewModel: SearchItemListViewModel
-        get() = ViewModelProvider(this).get(SearchItemListViewModel::class.java)
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        return super.onCreateOptionsMenu(menu)
+    }
 }

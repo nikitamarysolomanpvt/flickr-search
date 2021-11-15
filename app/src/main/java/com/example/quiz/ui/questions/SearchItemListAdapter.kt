@@ -16,16 +16,13 @@ class SearchItemListAdapter(private val context: SearchItemListFragment) :
 
      lateinit var listenerClick:(SearchItem)->Unit
 
-    private val items = ArrayList<SearchItem>()
+    private val items = ArrayList<SearchItem?>()
 
-    fun setItems(items: ArrayList<SearchItem>) {
-        this.items.clear()
-        this.items.addAll(items)
+    fun setItems(newItems: ArrayList<SearchItem?>) {
+
+        items.clear()
+        items.addAll(newItems)
         notifyDataSetChanged()
-    }
-
-    fun getItems(): ArrayList<SearchItem>? {
-        return this.items
     }
 
     override fun getItemId(position: Int): Long {
@@ -40,23 +37,20 @@ class SearchItemListAdapter(private val context: SearchItemListFragment) :
         val inflater = LayoutInflater.from(parent.context)
         val binding = SearchedItemBinding.inflate(inflater, parent, false)
 
-        return SearchItemViewHolder(binding, context)
+        return SearchItemViewHolder(binding)
     }
 
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: SearchItemViewHolder, position: Int) {
-        holder.bind(items[position])
-
+        items[position]?.let { holder.bind(it) }
     }
 
 
     inner class SearchItemViewHolder(
-        private val itemBinding: SearchedItemBinding,
-        private val context: SearchItemListFragment
-    ) : RecyclerView.ViewHolder(itemBinding.root){
-        private lateinit var item: SearchItem
+        private val itemBinding: SearchedItemBinding
 
+    ) : RecyclerView.ViewHolder(itemBinding.root){
 
         @SuppressLint("SetTextI18n")
         fun bind(item: SearchItem) {
@@ -70,7 +64,6 @@ class SearchItemListAdapter(private val context: SearchItemListFragment) :
             itemBinding.textTitle.text=item.title
             itemBinding.item.setOnClickListener { listenerClick.invoke(item) }
         }
-
     }
 }
 
