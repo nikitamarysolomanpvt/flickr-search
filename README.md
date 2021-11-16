@@ -1,6 +1,6 @@
-#Quiz - Android Architecture Sample
+#Flickr - Android Architecture Sample
 
-sberoch/RickAndMorty-AndroidArchitectureSample
+
  * ViewModel
  * LiveData
  * Hilt (for dependency injection)

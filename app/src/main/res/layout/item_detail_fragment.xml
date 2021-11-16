@@ -22,7 +22,7 @@
                 android:fitsSystemWindows="true"
                 app:contentScrim="?attr/colorPrimary"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:toolbarId="@+id/toolbar">
+                app:toolbarId="@id/toolbar">
 
 
                 <ImageView
@@ -66,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:context=".ui.moviedetail.ItemDetailScrollingActivity"
+            tools:context=".view.MainActivity"
             tools:showIn="@layout/item_detail_fragment">
 
             <RelativeLayout
@@ -74,7 +74,7 @@
                 android:layout_height="match_parent">
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/card_view_movie_detail"
+                    android:id="@+id/card_view_item_detail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="4dp"
@@ -104,35 +104,6 @@
                             android:textColor="#000000"
                             android:textSize="16sp" />
 
-
-                        <TextView
-                            android:id="@+id/text_writer"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:text="Writer: --"
-                            android:textColor="#000000"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/text_plot"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-
-                            android:text="Plot: --"
-                            android:textColor="#000000"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/text_imd"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-
-                            android:text="Internet Movie Database: --"
-                            android:textColor="#000000"
-                            android:textSize="16sp" />
 
 
                     </LinearLayout>

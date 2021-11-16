@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">Assesment</string>
+    <string name="app_name">Flickr Search</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="question"><![CDATA[<p>Which one of these foods is likely to contain the most bacteria?</p>]]></string>
     <string name="data_not_found">data not found</string>
-    <string name="no_recent_search">No recent search</string>
+    <string name="no_recent_search">You have no recent searches.  Enter a search term above</string>
     <string name="welcome_do_a_search">Welcome! Do a search</string>
+    <string name="enter_text_to_search_content_description">Enter text to search</string>
+    <string name="navigation_back_button">Navigation Back Button</string>
+    <string name="suggestion_item">suggestion item</string>
 </resources>

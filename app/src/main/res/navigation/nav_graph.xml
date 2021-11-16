@@ -7,18 +7,18 @@
 
     <fragment
         android:id="@+id/searchItemListFragment"
-        android:name="com.example.quiz.ui.questions.SearchItemListFragment"
-        android:label="Search Items"
+        android:name="com.flickr.android.view.search.SearchItemListFragment"
+        android:label="Flickr Search"
         tools:layout="@layout/search_item_list_fragment">
         <action
             android:id="@+id/action_searchItemListFragment_to_itemDetailFragment"
-            app:destination="@id/itemDetailFragment" />
-
+            app:destination="@id/itemDetailFragment"
+            />
 
     </fragment>
     <fragment
         android:id="@+id/itemDetailFragment"
-        android:name="com.example.quiz.ui.QuestionAnswere.ItemDetailFragment"
+        android:name="com.flickr.android.view.itemdetail.ItemDetailFragment"
         android:label="Item Detail"
         tools:layout="@layout/item_detail_fragment" />
 </navigation>
