@@ -24,7 +24,6 @@ allprojects {
         mavenCentral() // For ImagePicker library, this line is enough. Although, it has been published on jitpack as well
         maven { url "https://jitpack.io" }
     }
-
 }
 
 task clean(type: Delete) {
