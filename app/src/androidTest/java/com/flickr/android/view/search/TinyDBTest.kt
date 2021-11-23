@@ -1,40 +1,20 @@
-package com.flickr.android.utils
+package com.flickr.android.view.search
 
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.After
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
+import org.junit.runner.RunWith
 
+@RunWith(AndroidJUnit4::class)
 class TinyDBTest {
-    @Before
-    @Throws(Exception::class)
-    fun setUp() {
-    }
 
-    @After
-    @Throws(Exception::class)
-    fun tearDown() {
-    }
     @Test
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         Assert.assertEquals("com.flickr.android", appContext.packageName)
-    }
-    @get:Test
-    val string: Unit
-        get() {}
-
-    @get:Test
-    val listString: Unit
-        get() {}
-
-    @Test
-    fun putListString() {
-    }
-
-    @Test
-    fun putString() {
     }
 }

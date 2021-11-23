@@ -4,10 +4,12 @@ import android.database.Cursor
 import android.database.MatrixCursor
 import android.os.Bundle
 import android.provider.BaseColumns
+import android.util.Log
 import android.view.*
 import android.widget.CursorAdapter
 import android.widget.SearchView
 import android.widget.SimpleCursorAdapter
+import androidx.annotation.VisibleForTesting
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.MutableLiveData
@@ -39,6 +41,7 @@ class SearchItemListFragment : Fragment() {
     lateinit var searchViewSuggestions: MutableList<String>
     lateinit var tinyDB: TinyDB
     private var mAdapter: SimpleCursorAdapter? = null
+    private var callbackIdl: RecyclerViewHaveDataListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -143,6 +146,10 @@ class SearchItemListFragment : Fragment() {
 
     private fun populateRecyclerView(searchItems: ArrayList<SearchItem?>) {
         adapter.setItems(searchItems)
+        if (callbackIdl != null && adapter.getItemCount() > 0){
+            callbackIdl!!.recyclerViewHaveData();
+            callbackIdl = null;
+        }
     }
 
     fun navigateToDetailsFragment(title: SearchItem) {
@@ -186,7 +193,6 @@ class SearchItemListFragment : Fragment() {
                     searchView.setQuery("", true)
                     searchViewSuggestions =
                         getSearchViewSuggestionList(searchViewSuggestions, query)
-                    tinyDB.putListString("SUGGESTIONS", searchViewSuggestions as ArrayList<String>)
 
                     return true
                 }
@@ -218,7 +224,10 @@ class SearchItemListFragment : Fragment() {
                     searchViewSuggestionList.remove(getString(R.string.no_recent_search))
                 }
             } catch (e: Exception) {
+                Log.e("Exception",e.toString())
             }
+            tinyDB.putListString("SUGGESTIONS", searchViewSuggestionList as ArrayList<String>)
+
         }
         return searchViewSuggestionList
     }
@@ -239,8 +248,21 @@ class SearchItemListFragment : Fragment() {
 
 
             }
-            val value = asyncValue.await()
+            asyncValue.await()
             mAdapter?.changeCursor(c)
+        }
+    }
+
+    interface RecyclerViewHaveDataListener {
+        fun recyclerViewHaveData()
+    }
+
+    @VisibleForTesting
+    fun registerOnCallBack(callbackIdl: RecyclerViewHaveDataListener) {
+        this.callbackIdl = callbackIdl
+        if (adapter.getItemCount() > 0) {
+            this.callbackIdl!!.recyclerViewHaveData()
+            this.callbackIdl = null
         }
     }
 }
